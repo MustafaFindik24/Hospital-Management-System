@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Doktor Listesi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+</head>
+<body style="background-image: linear-gradient(to right, #5EE4FF, #5EE4FF, #5EE4FF, #5EE4FF, #5EE4FF);">
+<style>
+    .btn{
+        transition: .2s ease-in-out;
+    }
+    .btn:hover{
+        transform: scale(1.1);
+        transition: .2s ease-in-out;
+    }
+</style>
+<div>
+    <div align="center">
+        <h1>Doktor Listesi</h1>
+
+        <div class="mb-2" sec:authorize="isAuthenticated()">
+            Hoşgeldin <b><span sec:authentication="name">Username</span></b> &nbsp;
+            <i><span sec:authentication="principal.authorities">Roles</span></i>
+        </div>
+
+        <form class="mb-4" th:action="@{/logout}" method="post">
+            <input class="btn btn-warning text-white" type="submit" value="Çıkış" />
+            <a class="btn btn-secondary" href="/">Anasayfa</a>
+        </form>
+
+        <div class="btn btn-primary mb-2" sec:authorize="hasAnyAuthority('ADMIN')">
+            <a style="color:white; text-decoration: none;" href="/new">Kullanıcı Ekle</a>
+        </div>
+
+        <div class="btn btn-primary mb-2" sec:authorize="hasAnyAuthority('ADMIN')">
+            <a style="color:white; text-decoration: none;" href="/newDoc">Doktor Ekle</a>
+        </div>
+
+        <table class="table table-light" style="width: 90%; box-shadow: 0px 10px 10px rgba(0,0,0,0.1);">
+            <thead>
+            <tr class="text-center">
+                <th> ID</th>
+                <th> Ad</th>
+                <th>Branş</th>
+                <th>Unvan</th>
+                <th>Telefon Numarası</th>
+                <th>E-mail</th>
+
+                <th sec:authorize="hasAnyAuthority('ADMIN')">İşlem</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="text-center" th:each="doctor: ${listDoctor}">
+                <td th:text="${doctor.id}">Doctor ID</td>
+                <td th:text="${doctor.name}">Doctor username</td>
+                <td th:text="${doctor.branch}">Doctor branch</td>
+                <td th:text="${doctor.degree}">Doctor degree</td>
+                <td th:text="${doctor.phone_no}">Doctor phone number</td>
+                <td th:text="${doctor.email}">Doctor e-mail</td>
+
+
+                 <td sec:authorize="hasAnyAuthority('ADMIN')">
+                    <div sec:authorize="hasAnyAuthority('ADMIN')">
+                        <a class="btn btn-danger" th:href="@{'/deleteDoc/' + ${doctor.id}}">Sil</a>
+                        <a class="btn btn-info" th:href="@{'/editDoc/' + ${doctor.id}}">Güncelle</a>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+</html>

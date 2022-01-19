@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+</head>
+<body>
+<div>
+    <nav class="navbar navbar-expand-lg bg-primary">
+        <a class="navbar-brand text-white" href="/">Anasayfa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-white" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/about">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/contact">İletişim</a>
+                </li>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/list_user">Kullanıcı listesi</a>
+                    </li>
+                </div>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/appointments_list">Randevular</a>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">Çıkış</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div>
+    <div class="mt-2 ml-4">
+        <div class="card m-4 float-left" style="width: 20rem;" th:each="appointment: ${listAllAppointment}">
+            <div class="card-body">
+                <td>İsim :</td>
+                <p th:text="${appointment.name}" class="card-body">İsim</p>
+                <td>Doktor :</td>
+                <p th:text="${appointment.doctor}" class="card-text">Doktorun Adı</p>
+                <td>Telefon :</td>
+                <p th:text="${appointment.phone_no}" class="card-text">Telefon Numarası</p>
+                <td>E-mail :</td>
+                <p th:text="${appointment.email}" class="card-text">E-mail</p>
+                <td>Tarih :</td>
+                <p th:text="${appointment.date}" class="card-text">Tarih</p>
+                <td>Zaman :</td>
+                <p th:text="${appointment.time}" class="card-text">Zaman</p>
+                <a sec:authorize="hasAnyAuthority('ADMIN')"
+                   class="btn btn-danger"
+                   th:href="@{'/deleteAppointment/' + ${appointment.id}}">Randevuyu Sil</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TODO supply a title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+</head>
+<body>
+<div>
+    <div align="center">
+        <h1>Doktor Güncelleme</h1>
+        <br />
+        <form action="#" th:action="@{/updateDoc}" th:object="${doctor}"
+              method="post">
+            <table cellpadding="10">
+                <tr>
+                    <td>Doktor ID:</td>
+                    <td><input class="form-control" type="text" th:field="*{id}" readonly="readonly" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>Doktor Adı:</td>
+                    <td><input class="form-control" type="text" th:field="*{name}" /></td>
+                </tr>
+                <tr>
+                    <td>Doktor Branşı:</td>
+                    <td><input class="form-control" type="text" th:field="*{branch}" /></td>
+                </tr>
+                <tr>
+                    <td>Doktor Unvanı:</td>
+                    <td><input class="form-control" type="text" th:field="*{degree}" /></td>
+                </tr>
+                <tr>
+                    <td>Doktor Telefon:</td>
+                    <td><input class="form-control" type="number" th:field="*{phone_no}" /></td>
+                </tr>
+                <tr>
+                    <td>Doktor E-mail:</td>
+                    <td><input class="form-control" type="text" th:field="*{email}" /></td>
+                </tr>
+                <tr>
+                    <td><button class="btn btn-info" type="submit">Güncelle</button></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+</body>
+</html>

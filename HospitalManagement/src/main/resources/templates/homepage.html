@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Anasayfa</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+</head>
+<body style="background-image: linear-gradient(to right, #2FE0D5, #2FE0D5, #2FE0D5, #2FE0D5, #2FE0D5);">
+<div>
+    <nav style="background-color: transparent !important;" class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand text-dark" href="/">Anasayfa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-dark" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/about">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/contact">İletişim</a>
+                </li>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/list_user">Kullanıcı listesi</a>
+                    </li>
+                </div>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/list_doctor">Doktor listesi</a>
+                    </li>
+                </div>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-dark" href="/appointments_list">Randevular</a>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" href="/logout">Çıkış</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="text-center mt-4">
+    <a class="btn btn-dark" style="color:white; text-decoration: none;" href="/newAppointment">Randevu Al</a>
+</div>
+
+<div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="src/resources/static/8889-d554012-1.jpg" class="d-block " alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="..." class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>
+
+</body>
+</html>

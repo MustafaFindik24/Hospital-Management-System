@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+</head>
+<body style="background-image: linear-gradient(to right, #5effb2, #5effb2, #5effb2, #5effb2, #5effb2);">
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand text-white" href="/">Anasayfa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-white" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/about">Hakkımızda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/contact">İletişim</a>
+                </li>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/list_user">Kullanıcı listesi</a>
+                    </li>
+                </div>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/reserve_list">Randevular</a>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">Çıkış</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="text-center">
+    <div style="background-color:#5EE4FF">
+    <h1 class="">Hastane Yönetim Sistemi</h1>
+        <br><br><br>
+        <p>Cumhuriyet Üniversitesi 5 Nisan 1973 tarihinde Cumhuriyetimizin 50. Yılı anısına kurulmuştur. Sağlık Hizmetleri Uygulama ve Araştırma Hastanesinin temeli 11 Eylül 1975 yılında atılmış ve 1992 yılının sonlarında hizmete açılmıştır.</p>
+        <br><br>
+    <p>Merkez bina 100 000 m2 kapalı alan, 7 blok ve 14 kattan oluşmaktadır. Hastanemizin toplam kapalı olanı 113.585 m2 ve toplam yatak kapasitesi 1050’dür. Kapalı alan ve yatak kapasitesi açısından ülkemizin en büyük üniversite hastanelerinden biridir. Hastanemiz sadece Sivas’a değil bölgesel olarak Tokat, Yozgat, Erzincan ve diğer komşu illerden gelen hastalara da hizmet vermektedir.</p>
+        <br><br>
+    <p>Kurulduğu günden bu yana evrensel tıbbi etik kurallarını ilke edinmiş, insan ve hasta haklarına saygılı, sürekli iyileşmeyi ve gelişmeyi amaçlayan, çalışan memnuniyetini önemseyen bir yöntem anlayışı ile ülkemize ve bölgemize gururla hizmet etmektedir. Verdiğimiz kaliteli sağlık hizmetlerinin yanı sıra Tıp Fakültemizin bir uygulama alanı olması sebebiyle günümüze kadar binlerce pratisyen ve uzman hekim yetiştirerek ülkemizin hizmetine sunulmuştur. Yetiştirdiği öğretim üyeleri ile dünya tıp literatüründeki değişiklikleri anında takip edebilmekte, yatarak tedavi gören ve ameliyat edilen hastalarını 7 gün 24 saat ilgili branş doktorlarıyla kesintisiz izlemekte, bütün bu hizmetlerin yanı sıra yaptığı bilimsel çalışmalarla ülke ve dünya tıbbına da katkıda bulunmayı sürdürmektedir.</p>
+        <br><br>
+    <p>Modern tıbbi cihazlarla donanmış Mikrobiyoloji, Biyokimya, Patoloji, Hematoloji, Parazitoloji laboratuarları, radyoloji ve nükleer tıp departmanları, 14 ameliyathanesi, merkezi sterilizasyon birimi, yenilenerek yatak kapasiteleri artırılan merkezi yoğun bakım ve yeni doğan yoğun bakım üniteleri, hemodiyaliz ve periton diyaliz merkezi ve ağrı kliniğimizle verdiği sağlık hizmetini her geçen gün daha iyiye, daha kaliteliye ve dünya standartlarına taşımaya devam etmektedir.</p>
+        <br><br>
+    <p>  Hastanemiz Türkiye’deki üniversite hastaneleri arasında hizmette bir ilk olarak, şehir merkezinden 30 km uzaklıkta, sıcak çermik kaplıca bölgesinde, 5 katlı, 100 yatak kapasiteli Fizik tedavi ve rehabilitasyon hastanesi ile sadece bölgemizin değil ülkemizin her yerinden gelen hastaları başarıyla tedavi etmektedir.
+   <br><br>
+    <p>  2006 yılında hizmete açtığımız radyasyon onkoloji hastanemiz bölgemizde kanser hastalarının ihtiyaç duydukları önemli bir açığı kapatmıştır. Barındırdığı modern radyoterapi cihazları ile her gün onlarca kanser hastaları radyoterapi görmekte ve şifa bulmaktadır.</p>
+    <br><br>
+        <p> En son olarak 2008 yılında Cumhurbaşkanımız Abdullah Gül tarafından açılışı yapılan Kalp Hastalıkları tıbbi ve cerrahi tedavisinde bölgeye yeni bir soluk getirmiştir. Son jenerasyon anjiyografi cihazları, tam teşekküllü iki ameliyathanesi, kardiyoloji ve kalp cerrahisi yoğun bakım üniteleri ile değerli halkımıza verdiği hizmeti her geçen gün arttırarak devam ettirmektedir.</p>
+    <p>  Bölgemizin acil tedavi gerektiren yüksek riskli çocuk ve erişkin hastalar için acil polikliniğinde kaliteli hizmet vermektedir. Bunun yanı sıra modern mimarisi, cihaz ve donanımıyla Türkiye‘de örnek alınan bir birim olarak dikkatleri üzerine çekmektedir. Açıldığı günden bu yana sürekli artan hasta potansiyeli bu başarının bir göstergesidir.</p>
+     <br><br>
+        <p>    Hastanemiz 2005 yılında Sağlık Bakanlığı tarafından ‘’bebek dostu hastanesi’’ ünvanını almıştır.</p>
+        <br><br>
+        <p>ISO-9001-2008 kalite yönetim sistemi belgeli hastanemiz sürekli yenilenmeyi, hasta ve çalışan memnuniyetini birincil görev olarak amaçlamaktadır. Kalite Yönetim Birimi kaliteli sağlık hizmeti sunma, çalışmalarımıza yön veren “hasta ve çalışan memnuniyet” anket çalışmaları yapılmakta ve alınan sonuçlar doğrultusunda iyileşme çalışmaları planlanmaktadır.</p>
+    </div>
+</div>
+</body>
+</html>

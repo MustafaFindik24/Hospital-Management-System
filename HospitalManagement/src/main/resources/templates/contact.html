@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html   xmlns:th="http://www.thymeleaf.org"
+        xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+        lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hastane | İletişim</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}" />
+</head>
+<body style="background-image: linear-gradient(to right, #5EE4FF, #5EE4FF, #5EE4FF, #5EE4FF, #5EE4FF);">
+
+<div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+        <a class="navbar-brand text-white" href="/">Anasayfa</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-white" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/about">Hakkımızda</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/contact">İletişim</a>
+                </li>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/list_user">Kullanıcı listesi</a>
+                    </li>
+                </div>
+                <div sec:authorize="hasAnyAuthority('ADMIN')">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/reserve_list">Randevular</a>
+                    </li>
+                </div>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="/logout">Çıkış</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+<div class="text-center">
+    <h1>İletişim</h1>
+    <form method="post" class="mt-4">
+        <h3>Mesajınızı iletin</h3>
+
+        <form>
+
+
+                    <div class="form-group" style="width: 600px;   margin-left: 650px;">
+                        <input type="text" name="txtName" class="form-control" placeholder="İsim *" value="" />
+                    </div>
+                    <div class="form-group"  style="width: 600px;   margin-left: 650px;" >
+                        <input type="email" name="email" class="form-control" placeholder="Email *" value="" />
+                    </div>
+                    <div class="form-group"   style="width: 600px;   margin-left: 650px;">
+                        <input type="tel" name="tel" class="form-control" placeholder="Telefon *" value="" />
+                    </div>
+
+
+                    <div class="form-group">
+                        <textarea name="txtMsg" class="form-control" placeholder="Mesajınız *" style="width: 600px; height: 145px;  margin-left: 650px;"></textarea>
+                    </div>
+
+            <div class="form-group ">
+                <input type="submit" name="btnSubmit" class="btn btn-primary" value="Gönder" />
+            </div>
+
+        </form>
+
+    </form>
+</div>
+</body>
+</html>
