@@ -2,7 +2,7 @@
 
 A user can enter the application and make an appointment and the admin can check and edit the appointment.
 
-Usage of \
+Usage of 
 
 Spring boot --> Spring security, spring web, spring jpa \
 Database    --> Hibernate, Mysql \
